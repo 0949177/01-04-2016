@@ -1,0 +1,38 @@
+####EJEMPLO###
+install.packages("fpp")
+require(fpp)
+help("fpp")
+plot(window(elec,start=1980),ylab="Gwh",xlab="Year",main="Australian Electricity production")
+###Estacionalidad, tendencia y no ciclico
+plot(bricksq,ylab="million units",xlab="Year",main="Australian clay brick production")
+##Estacionalidad y ciclico no mucha tendecncia
+plot(hsales,main="Sales of new-one family houses, USA",ylab="Total sales",xlba="Year")
+##No estacionalidad ni tendencia, posible ciclo
+
+########Ejercicio de clase#######
+KIM<-read.csv(("C:\\Users\\SALA-C24\\Documents\\KIMBERLY.csv"),header = T)
+KIM1<-ts(KIM[,5],frequency = 12,start = 2000)
+plot(KIM1,,main="Valor de acciones Kimberly",ylab="Precio",xlab="Años",col="red")
+###Tendencia:Kimberly, de Enero de 2000 a mediados de 2012 muestra una tendencia a la alza; sin embargo
+###         Después de esa fecha la accion no muestra un comportamiento estable
+#Estacionalidad:Muestra estacionalidad en el periodo comprendido entre enero de 2005 y Agosto de 2009
+##          empero en los periodos anteriores y posteriores (2000-2005) y (2010-2016) respectivamente
+##          No mostró estacionalidad
+#Ciclico:El Kimberly no muestra ciclos en el precio de sus acciones
+BIM<-read.csv(("C:\\Users\\SALA-C24\\Documents\\BIMBO.csv"),header = T)
+BIM1<-ts(BIM[,5],frequency = 12,start = 2000)
+plot(BIM1,,main="Valor de acciones Bimbo",ylab="Precio",xlab="Años",col="blue")
+#Tendencia: La acción de Bimbo presenta tendencia a la alza de (2000-2011), en 2011 tiene un desplome
+#           Pero de 2011 a 2016 es claro que la tendencia de la accion continua a la alza
+#Estacionalidad: Bimblo cuenta con algunos lapsos de estacionalidad de 2011 a 2016, sin embargo;
+                #en los periodos anteriores no es tan clara la estacionalidad
+### Ciclos:La accion de Bimbo no presenta ciclos claros durante el periodo comprendido de 200 a 2016
+CEM<-read.csv(("C:\\Users\\SALA-C24\\Documents\\CEMEX.csv"),header = T)
+CEM1<-ts(CEM[,5],frequency = 12,start = 2000)
+plot(CEM1,,main="Valor de acciones Cemex",ylab="Precio",xlab="Años",col="deepskyblue")
+###Tedencia: Del periodo comprendido de 2000 a 2010 no tiene tendecia clara
+###Estacionalidad: Bimbo no presenta estacionalidad
+####Ciclicos: Bimbo presenta ciclos de 2012 a 2016
+pdf(file="Grafico4.pdf") 
+ts.plot(BIM1,KIM1,CEM1,col=2:4,main="Precio de Kimberly, Bimbo y Cemex",xlab="Años",ylab="Precio")
+dev.off()    
